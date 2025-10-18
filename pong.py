@@ -103,11 +103,17 @@ while running:
                 if restart.collidepoint(event.pos):
                     reset_game()
                     state = PLAYING
+                elif quit.collidepoint(event.pos):
+                    reset_game()
+                    state = MENU
 
             elif state == PAUSE_BOT:
                 if restart.collidepoint(event.pos):
                     reset_game()
                     state = BOT
+                elif quit.collidepoint(event.pos):
+                    reset_game()
+                    state = MENU
 
         elif state == PLAYING:
             if event.type == pygame.KEYDOWN:
@@ -143,12 +149,12 @@ while running:
         if ball.rect.left <= 0:
             point_2 += 1
             ball.rect.center = (800 // 2, 600 // 2)
-            ball.speed_x = -7
+            ball.speed_x = random.choice([-7, -6, -5, 5, 6, 7])
 
         elif ball.rect.right >= 800:
             point_1 += 1
             ball.rect.center = (800 // 2, 600 // 2)
-            ball.speed_x = -7
+            ball.speed_x = random.choice([-7, -6, -5, 5, 6, 7])
 
         if point_1 == 7 or point_2 == 7:
             win_sound.play()
@@ -164,8 +170,7 @@ while running:
         else:
             draw_text("Player 2 wins!", font, (255, 100, 100), screen, 400, 200)
         restart = draw_text("RESTART", font, (255, 100, 100), screen, 400, 500)
-
-       
+        quit = draw_text("QUIT", font, (255, 100, 100), screen, 400, 400)
     
     elif state == BOT:
         screen.fill((0, 0, 0))
@@ -183,14 +188,12 @@ while running:
         if ball.rect.left <= 0:
             point_2 += 1
             ball.rect.center = (800 // 2, 600 // 2)
-            ball.speed_x = -7
+            ball.speed_x = random.choice([-7, -6, -5, 5, 6, 7])
 
         elif ball.rect.right >= 800:
             point_1 += 1
             ball.rect.center = (800 // 2, 600 // 2)
-            ball.speed_x = -7
-
-        
+            ball.speed_x = random.choice([-7, -6, -5, 5, 6, 7])
 
         all_sprites.draw(screen)
         player_1 = draw_text(str(point_1), font, (255, 255, 255), screen, 50, 50)
@@ -206,6 +209,7 @@ while running:
         else:
             draw_text("BOT wins!", font, (255, 100, 100), screen, 400, 200)
         restart = draw_text("RESTART", font, (255, 100, 100), screen, 400, 500)
+        quit = draw_text("QUIT", font, (255, 100, 100), screen, 400, 400)
 
 
     pygame.display.flip()
