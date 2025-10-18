@@ -143,14 +143,14 @@ while running:
         if ball.rect.left <= 0:
             point_2 += 1
             ball.rect.center = (800 // 2, 600 // 2)
-            ball.speed_x *= -1
+            ball.speed_x = -7
 
         elif ball.rect.right >= 800:
             point_1 += 1
             ball.rect.center = (800 // 2, 600 // 2)
-            ball.speed_x *= -1
+            ball.speed_x = -7
 
-        if point_1 or point_2 == 1:
+        if point_1 == 7 or point_2 == 7:
             win_sound.play()
             state = PAUSE
         
@@ -159,7 +159,7 @@ while running:
         player_2 = draw_text(str(point_2), font, (255, 255, 255), screen, 750, 50)
     
     elif state == PAUSE:
-        if point_1 ==1:
+        if point_1 == 7:
             draw_text("Player 1 wins!", font, (255, 100, 100), screen, 400, 200)
         else:
             draw_text("Player 2 wins!", font, (255, 100, 100), screen, 400, 200)
@@ -183,12 +183,12 @@ while running:
         if ball.rect.left <= 0:
             point_2 += 1
             ball.rect.center = (800 // 2, 600 // 2)
-            ball.speed_x *= -1
+            ball.speed_x = -7
 
         elif ball.rect.right >= 800:
             point_1 += 1
             ball.rect.center = (800 // 2, 600 // 2)
-            ball.speed_x *= -1
+            ball.speed_x = -7
 
         
 
@@ -196,12 +196,12 @@ while running:
         player_1 = draw_text(str(point_1), font, (255, 255, 255), screen, 50, 50)
         player_2 = draw_text(str(point_2), font, (255, 255, 255), screen, 750, 50)
 
-        if point_1 or point_2 == 1:
+        if point_1 == 7 or point_2 == 7:
             win_sound.play()
             state = PAUSE_BOT
 
     elif state == PAUSE_BOT:
-        if point_1 ==1:
+        if point_1 == 7:
             draw_text("Player 1 wins!", font, (255, 100, 100), screen, 400, 200)
         else:
             draw_text("BOT wins!", font, (255, 100, 100), screen, 400, 200)
